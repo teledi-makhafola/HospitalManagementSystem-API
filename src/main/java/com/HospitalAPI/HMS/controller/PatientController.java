@@ -20,13 +20,13 @@ public class PatientController {
         return ResponseEntity.ok("Successfully added patient");
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deletePatient(@PathVariable Long id){
         patientRepository.deleteById(id);
         return ResponseEntity.ok("Successfully deleted patient");
     }
 
-    @PatchMapping("/update")
+    @PatchMapping("/update/{id}")
     public Patient updatePatient(@PathVariable Long id, Patient patientData){
         patientRepository.findById(id);
 
