@@ -26,9 +26,17 @@ public class PatientController {
         return ResponseEntity.ok("Successfully deleted patient");
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Object> updatePatient(@PathVariable Long id){
+    @PatchMapping("/update")
+    public Patient updatePatient(@PathVariable Long id, Patient patientData){
+        patientRepository.findById(id);
 
-        return null;
+        patientData.setName(patientData.getName());
+        patientData.setLastName(patientData.getLastName());
+        patientData.setEmail(patientData.getEmail());
+        patientData.setMedicalAid(patientData.getMedicalAid());
+        patientData.setPhoneNumber(patientData.getPhoneNumber());
+
+
+        return patientRepository.save(patientData);
     }
 }
